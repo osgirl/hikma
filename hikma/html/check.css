@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 16, 2014, 3:31:02 PM
+    Author     : Win7Pro
+*/
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabicnaskh.css);
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+table{font-family:"Droid Arabic Naskh", "calibri", "verdana", "sans-serif"; font-size:16px; align:center; white-space:nowrap;}
+th{color:#0000CC;background-color:#FFFFFF;}
+tr{color:#000000;background-color:#FFAAAA;}
+/*
+tr:nth-child(odd){color:#000000;background-color:#FF0000;}
+tr:nth-child(even){color:#000000;background-color:#FFFFFF;}
+*/
+td{width:300px; height:30px; text-align:center;}
+.tableImage{width:100px; color:#000000; background-color:#FFFFFF;}
+
+select{width:290px; font-family:"Droid Arabic Naskh", "calibri", "verdana", "sans-serif"; font-size:13px; font-weight:bold; direction:RTL; text-align:right;}
+input[type=text]{width:290px; font-family:"Droid Arabic Naskh", "calibri", "verdana", "sans-serif"; font-size:13px; font-weight:bold; direction:RTL; text-align:right;}
+
+/*
+
+.message{background:#87CEEB;}
+.arabic{direction:RTL;text-align:right;}
+
+.searchHeaderTable th{color:#000000;background-color:#87CEEB;}
+.searchHeaderTable td{color:#000000;background-color:#87CEEB;}
+
+div{width:450px;}
+.searchDiv {background:#FFFFFF;}
+.searchBodyDiv {height:100px;overflow-y:scroll;}
+.searchBodyTable th{color:#FFFFFF;background-color:#000000;}
+.searchBodyTable tr{color:#FFFFFF;background-color:#6E6E6E;}
+.searchBodyTable tr:nth-child(odd){color:#FFFFFF;background-color:#6E6E6E;}
+.searchBodyTable tr:nth-child(even){color:#000000;background-color:#FFFFFF;}
+.searchBodyTable tr:hover{color:#FFFFFF;background-color:#000000;}
+*/
