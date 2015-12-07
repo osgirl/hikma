@@ -1,0 +1,57 @@
+﻿<html>
+    <head>
+        <title>Search</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="/static/check/check.js"></script>
+        <LINK REL=StyleSheet HREF="/static/check/check.css" TYPE="text/css">
+    </head>
+	<body>
+		<form>
+			<table>
+				<thead>
+				</thead>
+				<tfoot>
+				</tfoot>
+				<tbody>
+					<tr><th>بيانات المنتج</th></tr>
+					<tr>
+						<td><select><option value="">اختر منتج</option></select></td>
+						<td rowspan=2 class="tableImage"><img src="/static/check/images/product.jpg" alt="Product"></td></tr>
+					<tr>
+						<td><input type="text" value="كود المنتج"></td></tr>
+
+					<tr><th>بيانات المستخدم</th></tr>
+					<tr>
+						<td><select><option value="">مريض \ صيدلى</option></select></td>
+						<td rowspan=4 class="tableImage"><img src="/static/check/images/user.jpg" alt="User"></td></tr>
+					<tr>
+						<td><input type="text" value="إسمك"></td></tr>
+					<tr>
+						<td><input type="text" value="رقمك المحمول"></td></tr>
+					<tr>
+						<td><input type="text" value="بريدك الإلكترونى"></td></tr>
+
+					<tr><th>بيانات الصيدلية</th></tr>
+					<tr>
+						<td><select id="PharmacyState"><option value="">المحافظة</option></select></td>
+						<td rowspan=3 class="tableImage"><img src="/static/check/images/pharmacy.png" alt="Pharmacy"></td></tr>
+					<tr>
+						<td><select id="PharmacyCity"><option value="">المنطقة</option></select></td></tr>
+					<tr>
+						<td><select id="Pharmacy"><option value="">اختر الصيدلية</option></select></td></tr>
+
+					<tr><th>بيانات الطبيب</th></tr>
+					<tr>
+						<td><select><option value="">المحافظة</option></select></td>
+						<td rowspan=3 class="tableImage"><img src="/static/check/images/doctor.jpg" alt="Doctor"></td></tr>
+					<tr>
+						<td><select><option value="">المنطقة</option></select></td></tr>
+					<tr>
+						<td><select><option value="">اختر الطبيب</option></select></td></tr>
+				</tbody>
+			</table>
+		</form>
+	</body>
+</html>
