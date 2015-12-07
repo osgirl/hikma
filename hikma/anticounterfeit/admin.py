@@ -4,6 +4,78 @@ from .models import Product, State, City, Pharmacy, Doctor
 # Register your models here.
 #===============================================================================
 '''
+class CityInline(admin.TabularInline):      #StackedInline
+    model = City
+    extra = 5
+'''    
+#===============================================================================
+class ProductAdmin(admin.ModelAdmin):
+    fieldsets = [
+                 ("Product",        {'fields': ['product', 'image', 'image_thumb']}),
+                 #("Image",          {'fields': ['image']}),
+                 #("Product Image",  {'fields': ['image_thumb']}),
+                 ]
+    
+    list_display    = ['product', 'image_thumb']
+    readonly_fields = ['image_thumb',]
+    list_filter     = ['product']
+    search_fields   = ['product']
+    
+
+admin.site.register(Product, ProductAdmin)
+#===============================================================================
+class StateAdmin(admin.ModelAdmin):
+    fieldsets = [
+                 ("State",          {'fields': ['state']}),
+                 ]
+    
+    #inlines = [CityInline]
+    list_display    = ['state']
+    list_filter     = ['state']
+    search_fields   = ['state']
+    
+
+admin.site.register(State, StateAdmin)
+#===============================================================================
+class CityAdmin(admin.ModelAdmin):
+    fieldsets = [
+                 ("City",           {'fields': ['city', 'state']}),
+                 ]
+
+    list_display    = ['city', 'state']
+    list_filter     = ['city', 'state']
+    search_fields   = ['city', 'state__state']
+    
+
+admin.site.register(City, CityAdmin)
+#===============================================================================
+class PharmacyAdmin(admin.ModelAdmin):
+    fieldsets = [
+                 ("Pharmacy",       {'fields': ['pharmacy', 'city', 'state']}),
+                 ]
+
+    list_display    = ['pharmacy', 'city', 'state']
+    readonly_fields = ['state']
+    list_filter     = ['pharmacy', 'city__city', 'city__state__state']
+    search_fields   = ['pharmacy', 'city__city', 'city__state__state']
+    
+
+admin.site.register(Pharmacy, PharmacyAdmin)
+#===============================================================================
+class DoctorAdmin(admin.ModelAdmin):
+    fieldsets = [
+                 ("doctor",         {'fields': ['doctor', 'city', 'state']}),
+                 ]
+    
+    list_display    = ['doctor', 'city', 'state']
+    readonly_fields = ['state']
+    list_filter     = ['doctor', 'city__city', 'city__state__state']
+    search_fields   = ['doctor', 'city__city', 'city__state__state']
+    
+
+admin.site.register(Doctor, DoctorAdmin)
+#===============================================================================
+'''
 from django.contrib.admin.models import LogEntry, DELETION
 from django.utils.html import escape
 from django.core.urlresolvers import reverse
@@ -64,61 +136,4 @@ class LogEntryAdmin(admin.ModelAdmin):
 
 admin.site.register(LogEntry, LogEntryAdmin)
 '''
-#===============================================================================
-#class ChoiceInline(admin.TabularInline): #StackedInline
-#    model = Choice
-#    extra = 3
-
-class ProductAdmin(admin.ModelAdmin):
-    fieldsets = [
-                 ("Product",            {'fields': ['product']}),
-                 ("Image",            {'fields': ['image']}),
-                 ("Product Image",      {'fields': ['image_thumb']}),
-                 ]
-#    inlines = [ChoiceInline]
-    list_display = ['product', 'image_thumb']
-    readonly_fields = ['image_thumb',]
-    list_filter = ['product']
-    search_fields = ['product']
-    
-
-admin.site.register(Product, ProductAdmin)
-#===============================================================================
-class StateAdmin(admin.ModelAdmin):
-    fieldsets = [
-                 ("State",            {'fields': ['state']}),
-                 ]
-#    inlines = [ChoiceInline]
-    list_display = ['state']
-    list_filter = ['state']
-    search_fields = ['state']
-    
-
-admin.site.register(State, StateAdmin)
-#===============================================================================
-class CityAdmin(admin.ModelAdmin):
-    fieldsets = [
-                 ("City",   {'fields': ['city']}),
-                 ("State",  {'fields': ['state']}),
-                 ]
-#    inlines = [ChoiceInline]
-    list_display = ['city', 'state']
-    list_filter = ['city', 'state']
-    search_fields = ['city', 'state__state']
-    
-
-admin.site.register(City, CityAdmin)
-#===============================================================================
-class PharmacyAdmin(admin.ModelAdmin):
-    fieldsets = [
-                 ("Pharmacy",   {'fields': ['pharmacy']}),
-                 ("city",       {'fields': ['city']}),
-                 ]
-#    inlines = [ChoiceInline]
-    list_display = ['pharmacy', 'city']
-    list_filter = ['pharmacy', 'city']
-    search_fields = ['pharmacy', 'city__city']
-    
-
-admin.site.register(Pharmacy, PharmacyAdmin)
 #===============================================================================

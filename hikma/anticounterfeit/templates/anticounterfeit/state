@@ -1,0 +1,11 @@
+{% if states %}
+	<select id="state">
+	{% for state in states %}
+		<option value={{ state.statePK }}>{{ state.state }}</option>
+	{% endfor %}
+	</select>
+{% else %}
+    <select id="state">
+    <option value="">Empty</option>
+    </select>
+{% endif %}

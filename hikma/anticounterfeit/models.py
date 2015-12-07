@@ -16,7 +16,7 @@ class Product(models.Model):
     image_thumb.short_description = 'Image'
     image_thumb.allow_tags = True
     
-    def __str__(self):
+    def __unicode__(self):
         return self.product
 
 class publicCode(models.Model):
@@ -25,7 +25,7 @@ class publicCode(models.Model):
     active          = models.BooleanField('Active', default=False, null=False, blank=False)
     product         = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.publicCode
 
 class UserCode(models.Model):
@@ -34,22 +34,22 @@ class UserCode(models.Model):
     active          = models.BooleanField('Active', default=False, null=False, blank=False)
     product         = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.userCode
 
 class State (models.Model):
     statePK         = models.AutoField('State PK', primary_key=True)
     state           = models.CharField('State', null=False, blank=False, unique=True, max_length=20)
-    
-    def __str__(self):
-        return self.state
 
+    def __unicode__(self):
+        return self.state
+    
 class City(models.Model):
     cityPK          = models.AutoField('City PK', primary_key=True)
     city            = models.CharField('City', null=False, blank=False, unique=True, max_length=30)
     state           = models.ForeignKey(State, null=False, blank=False, on_delete=models.PROTECT)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.city
     
     class Meta:
@@ -60,8 +60,11 @@ class Pharmacy(models.Model):
     pharmacy        = models.CharField('Pharmacy', null=False, blank=False, unique=True, max_length=30)
     city            = models.ForeignKey(City, null=False, blank=False, on_delete=models.PROTECT)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.pharmacy
+    
+    def state(self):
+        return self.city.state
     
     class Meta:
         unique_together=(("pharmacy", "city"),)
@@ -71,8 +74,11 @@ class Doctor(models.Model):
     doctor          = models.CharField('Doctor', null=False, blank=False, unique=True, max_length=30)
     city            = models.ForeignKey(City, null=False, blank=False, on_delete=models.PROTECT)
     
-    def __str__(self):
+    def __unicode__(self):
         return self.doctor
+    
+    def state(self):
+        return self.city.state
     
     class Meta:
         unique_together=(("doctor", "city"),)
