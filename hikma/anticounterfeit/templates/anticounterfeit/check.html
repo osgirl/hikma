@@ -20,8 +20,11 @@
 						<td><select id="Product"><option value="">اختر منتج</option></select></td>
 						<td rowspan=2 class="tableImage"><img src="/static/check/images/product.jpg" alt="Product"></td></tr>
 					<tr>
-						<td><input type="text" value="{{ QRCode }}"></td></tr>
-
+						{% if QRCode %}
+							<td><input type="text" value="{{ QRCode }}"></td></tr>
+						{% else %}
+							<td><input type="text" value="كود المنتج"></td></tr>
+						{% endif %}
 					<tr><th>بيانات المستخدم</th></tr>
 					<tr>
 						<td>
