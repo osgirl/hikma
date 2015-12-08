@@ -7,11 +7,17 @@ urlpatterns = [
                url(r'^$', views.index, name='index'),
                # ex: /anticounterfeit/check
                url(r'^check/$', views.check, name='check'),
-               # ex: /anticounterfeit/check.css
-               #url(r'^check/check.css/$', views.checkCSS, name='checkCSS'),
-               # ex: /anticounterfeit/state/cairo
+               # ex: /anticounterfeit/check/5463192
+               url(r'^checkQRCode/(?P<QRCode>[0-9]+)$', views.checkQRCode, name='checkQRCode'),
+               # ex: /anticounterfeit/product
+               url(r'^product/$', views.product, name='product'),
+               # ex: /anticounterfeit/state
                url(r'^state/$', views.state, name='state'),
-               # ex: /anticounterfeit/cairo/city
-               url(r'^(?P<state>[a-zA-Z]+)/city$', views.city, name='check'),
+               # ex: /anticounterfeit/04/city
+               url(r'^(?P<statePK>[0-9]+)/city$', views.city, name='city'),
+               # ex: /anticounterfeit/01/pharmacy
+               url(r'^(?P<cityPK>[0-9]+)/pharmacy$', views.pharmacy, name='pharmacy'),
+               # ex: /anticounterfeit/01/doctor
+               url(r'^(?P<cityPK>[0-9]+)/doctor$', views.doctor, name='doctor'),
 
 ]

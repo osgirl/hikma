@@ -13,14 +13,26 @@ def index(request):
 
 def check(request):
     return render(request, 'anticounterfeit/check.html',)
-'''
-def checkCSS(request):
-    return render(request, 'anticounterfeit/check.css',)
-'''
+
+def checkQRCode(request, QRCode):
+    return render(request, 'anticounterfeit/check.html', {'QRCode': QRCode})
+
+def product(request):
+    products = Product.objects.all()
+    return render(request, 'anticounterfeit/product', {'products': products})
+
 def state(request):
-    states = get_list_or_404(State.objects.all())
+    states = State.objects.all()
     return render(request, 'anticounterfeit/state', {'states': states})
 
-def city(request, state):
-    response = "Nasr City, ALMohandsein,  ..."
-    return HttpResponse(response)
+def city(request, statePK):
+    cities = City.objects.filter(state=statePK)
+    return render(request, 'anticounterfeit/city', {'cities': cities})
+
+def pharmacy(request, cityPK):
+    pharmacies = Pharmacy.objects.filter(city=cityPK)
+    return render(request, 'anticounterfeit/pharmacy', {'pharmacies': pharmacies})
+
+def doctor(request, cityPK):
+    doctors = Doctor.objects.filter(city=cityPK)
+    return render(request, 'anticounterfeit/doctor', {'doctors': doctors})
