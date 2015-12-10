@@ -23,7 +23,7 @@
 							<td rowspan=2 class="tableImage"><img src="/static/check-result/images/product.jpg" alt="Product"></td></tr>
 						<tr>
 							{% if QRCode %}
-								<td><input type="text" value="{{ QRCode }}"></td></tr>
+								<td><input type="text" id="productID" value="{{ QRCode }}"></td></tr>
 							{% else %}
 								<td><input type="text" value="كود المنتج"></td></tr>
 							{% endif %}
@@ -38,9 +38,9 @@
 								</select>
 							</td>
 							<td rowspan=4 class="tableImage"><img src="/static/check-result/images/user.jpg" alt="User"></td></tr>
-						<tr><td><input type="text" id="name" value="إسمك"></td></tr>
-						<tr><td><input type="text" id="mobile" value="رقمك المحمول"></td></tr>
-						<tr><td><input type="text" id="email" value="بريدك الإلكترونى"></td></tr>
+						<tr><td><input type="text" id="checker" value="إسمك"></td></tr>
+						<tr><td><input type="text" id="checkerMobile" value="رقمك المحمول"></td></tr>
+						<tr><td><input type="text" id="checkerEmail" value="بريدك الإلكترونى"></td></tr>
 	
 						<tr><th>بيانات الصيدلية</th></tr>
 						<tr><td><select id="pharmacyState"><option value="">المحافظة</option></select></td>

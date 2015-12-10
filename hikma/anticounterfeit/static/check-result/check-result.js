@@ -3,22 +3,28 @@ $(document).ready(function(){
 
 	$("#pharmacyState").load("/anticounterfeit/state");
 	$("#pharmacyState").change(function() {
-		$("#pharmacyCity").load("/anticounterfeit/" + $("#pharmacyState").val() + "/city");
+		$("#pharmacyCity").load("/anticounterfeit/"	+ $("#pharmacyState").val()	+ "/city");
 	});
 	$("#pharmacyCity").change(function() {
-		$("#pharmacy").load("/anticounterfeit/" + $("#pharmacyCity").val() + "/pharmacy");
+		$("#pharmacy").load("/anticounterfeit/"		+ $("#pharmacyCity").val()	+ "/pharmacy");
 	});
 
 	$("#doctorState").load("/anticounterfeit/state");
 	$("#doctorState").change(function() {
-		$("#doctorCity").load("/anticounterfeit/" + $("#doctorState").val() + "/city");
+		$("#doctorCity").load("/anticounterfeit/"	+ $("#doctorState").val()	+ "/city");
 	});
 	$("#doctorCity").change(function() {
-		$("#doctor").load("/anticounterfeit/" + $("#doctorCity").val() + "/doctor");
+		$("#doctor").load("/anticounterfeit/"		+ $("#doctorCity").val()	+ "/doctor");
 	});
 	$("#check").click(function() {
 		postArray = {
-			product : $("#product").val()
+			product			: $("#product").val(),
+			productID		: $("#productID").val(),
+			pharmacy		: $("#pharmacy").val(),
+			doctor			: $("#doctor").val(),
+			checker			: $("#checker").val(),
+			checkerMobile	: $("#checkerMobile").val(),
+			checkerEmail	: $("#checkerEmail").val()
 		}
 		$.post("/anticounterfeit/result/", postArray, function(data, status){
 			$("#bodyDiv").html(data)

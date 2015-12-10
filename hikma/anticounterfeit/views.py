@@ -29,23 +29,36 @@ def state(request):
     states = State.objects.all()
     return render(request, 'anticounterfeit/state', {'states': states})
 
-def city(request, statePK):
-    cities = City.objects.filter(state=statePK)
+def city(request, stateID):
+    cities = City.objects.filter(state=stateID)
     return render(request, 'anticounterfeit/city', {'cities': cities})
 
-def pharmacy(request, cityPK):
-    pharmacies = Pharmacy.objects.filter(city=cityPK)
+def pharmacy(request, cityID):
+    pharmacies = Pharmacy.objects.filter(city=cityID)
     return render(request, 'anticounterfeit/pharmacy', {'pharmacies': pharmacies})
 
-def doctor(request, cityPK):
-    doctors = Doctor.objects.filter(city=cityPK)
+def doctor(request, cityID):
+    doctors = Doctor.objects.filter(city=cityID)
     return render(request, 'anticounterfeit/doctor', {'doctors': doctors})
 
 @ensure_csrf_cookie  # to force setting of csrf cookie if form added dynamically to the page - for example through jquery
 def result(request):
-    product = request.POST.get('product', '')
-    product = Product.objects.get(productPK=product)
+    product         = request.POST.get('product'        , 0)
+    productID       = request.POST.get('productID'      , 0)
+    pharmacy        = request.POST.get('pharmacy'       , 0)
+    doctor          = request.POST.get('doctor'         , 0)
+    cheaker         = request.POST.get('checker'        , '')
+    cheakerName     = request.POST.get('checkerName'    , '')
+
+    product         = Product.objects.get(id=product)
+    pharmacy        = Pharmacy.objects.get(id=pharmacy)
+    doctor          = Doctor.objects.get(id=doctor)
+
+    postArray       = {'product'    : product,
+                       'pharmacy'   : pharmacy,
+                       'doctor'     : doctor
+                       }
     #c = {'product': product}
     #c.update(csrf(request))
     #return render_to_response('anticounterfeit/result.html', c)
-    return render(request, 'anticounterfeit/result.html', {'product': product})
+    return render(request, 'anticounterfeit/result.html', postArray)

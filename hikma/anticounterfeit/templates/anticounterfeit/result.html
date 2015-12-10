@@ -19,16 +19,16 @@
 			<tr><td><label id="email"></label></td></tr>
 
 			<tr><th>بيانات الصيدلية</th></tr>
-			<tr><td><label id="pharmacyState"></label></td>
+			<tr><td><label id="pharmacyState">{{ pharmacy.state }}</label></td>
 				<td rowspan=3 class="tableImage"><img src="/static/check-result/images/pharmacy.png" alt="Pharmacy"></td></tr>
-			<tr><td><label id="pharmacyCity"></label></tr>
-			<tr><td><label id="pharmacy"></label></td></tr>
+			<tr><td><label id="pharmacyCity">{{ pharmacy.city }}</label></tr>
+			<tr><td><label id="pharmacy">{{ pharmacy.pharmacy }}</label></td></tr>
 
 			<tr><th>بيانات الطبيب</th></tr>
-			<tr><td><label id="doctor"></label></td>
+			<tr><td><label id="doctor">{{ doctor.state }}</label></td>
 				<td rowspan=3 class="tableImage"><img src="/static/check-result/images/doctor.jpg" alt="Doctor"></td></tr>
-			<tr><td><label id="pharmacy"></label></td></tr>
-			<tr><td><label id="pharmacy"></label></td></tr>
+			<tr><td><label id="pharmacy">{{ doctor.city }}</label></td></tr>
+			<tr><td><label id="pharmacy">{{ doctor.doctor }}</label></td></tr>
 		</tbody>
 	</table>
 </form>

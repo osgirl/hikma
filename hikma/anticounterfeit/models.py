@@ -6,7 +6,6 @@ from django.utils import timezone
 # Create your models here.
 
 class Product(models.Model):
-    productPK       = models.AutoField('Product PK', primary_key=True)
     product         = models.CharField('Product', null=False, blank=False, unique=True, max_length=20)
     image           = models.ImageField(upload_to='%y%m%d', height_field=None, width_field=None, max_length=100)
     
@@ -81,4 +80,6 @@ class Check(models.Model):
     productFK       = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
     pharmacyFK      = models.ForeignKey(Pharmacy, null=False, blank=False, on_delete=models.PROTECT)
     doctorFK        = models.ForeignKey(Doctor, null=False, blank=False, on_delete=models.PROTECT)
-    checker         = models.CharField('State', null=False, blank=False, unique=True, max_length=20)
+    checker         = models.CharField('Checker', null=False, blank=False, max_length=50)
+    checkerMobile   = models.CharField('Cheaker Mobile', null=False, blank=False, max_length=50)
+    checkerEmail    = models.CharField('Cheaker Email', null=False, blank=False, max_length=50)
