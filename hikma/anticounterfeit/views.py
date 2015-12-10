@@ -1,17 +1,21 @@
 from django.http import HttpResponse
 from django.http import Http404
 from django.template import RequestContext, loader
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404, get_list_or_404
 from .models import Product, State, City, Pharmacy, Doctor
-from pip._vendor.requests.models import Response
-
+from django.template.context_processors import csrf
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 # Create your views here.
+@ensure_csrf_cookie # to force setting of csrf cookie if form added dynamically to the page - for example through jquery
 def index(request):
     response = "AntiCounterFeit Home Page"
     return HttpResponse(response)
 
 def check(request):
+    #c = {}
+    #c.update(csrf(request))
+    #return render_to_response('anticounterfeit/check.html', c)
     return render(request, 'anticounterfeit/check.html',)
 
 def checkQRCode(request, QRCode):
@@ -36,3 +40,12 @@ def pharmacy(request, cityPK):
 def doctor(request, cityPK):
     doctors = Doctor.objects.filter(city=cityPK)
     return render(request, 'anticounterfeit/doctor', {'doctors': doctors})
+
+@ensure_csrf_cookie  # to force setting of csrf cookie if form added dynamically to the page - for example through jquery
+def result(request):
+    product = request.POST.get('product', '')
+    product = Product.objects.get(productPK=product)
+    #c = {'product': product}
+    #c.update(csrf(request))
+    #return render_to_response('anticounterfeit/result.html', c)
+    return render(request, 'anticounterfeit/result.html', {'product': product})

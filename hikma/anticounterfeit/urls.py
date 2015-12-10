@@ -19,5 +19,6 @@ urlpatterns = [
                url(r'^(?P<cityPK>[0-9]+)/pharmacy$', views.pharmacy, name='pharmacy'),
                # ex: /anticounterfeit/01/doctor
                url(r'^(?P<cityPK>[0-9]+)/doctor$', views.doctor, name='doctor'),
-
+               # ex: /anticounterfeit/result
+               url(r'^result/$', views.result, name='result'),              
 ]
