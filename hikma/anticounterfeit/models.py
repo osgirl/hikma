@@ -20,7 +20,6 @@ class Product(models.Model):
         return self.product
 
 class publicCode(models.Model):
-    publicCodePK    = models.AutoField('Public Code PK', primary_key=True)
     publicCode      = models.BigIntegerField('Public Code', null=False, blank=False, unique=True)
     active          = models.BooleanField('Active', default=False, null=False, blank=False)
     product         = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
@@ -29,7 +28,6 @@ class publicCode(models.Model):
         return self.publicCode
 
 class UserCode(models.Model):
-    userCodePK      = models.AutoField('User Code PK', primary_key=True)
     userCode        = models.BigIntegerField('User Code', null=False, blank=False, unique=True)
     active          = models.BooleanField('Active', default=False, null=False, blank=False)
     product         = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
@@ -38,14 +36,12 @@ class UserCode(models.Model):
         return self.userCode
 
 class State (models.Model):
-    statePK         = models.AutoField('State PK', primary_key=True)
     state           = models.CharField('State', null=False, blank=False, unique=True, max_length=20)
 
     def __unicode__(self):
         return self.state
     
 class City(models.Model):
-    cityPK          = models.AutoField('City PK', primary_key=True)
     city            = models.CharField('City', null=False, blank=False, unique=True, max_length=30)
     state           = models.ForeignKey(State, null=False, blank=False, on_delete=models.PROTECT)
 
@@ -56,7 +52,6 @@ class City(models.Model):
         unique_together=(("city", "state"),)
     
 class Pharmacy(models.Model):
-    pharmacyPK      = models.AutoField('Pharmacy PK', primary_key=True)
     pharmacy        = models.CharField('Pharmacy', null=False, blank=False, unique=True, max_length=30)
     city            = models.ForeignKey(City, null=False, blank=False, on_delete=models.PROTECT)
     
@@ -70,7 +65,6 @@ class Pharmacy(models.Model):
         unique_together=(("pharmacy", "city"),)
         
 class Doctor(models.Model):
-    doctorPK        = models.AutoField('Doctor PK', primary_key=True)
     doctor          = models.CharField('Doctor', null=False, blank=False, unique=True, max_length=30)
     city            = models.ForeignKey(City, null=False, blank=False, on_delete=models.PROTECT)
     
@@ -82,3 +76,9 @@ class Doctor(models.Model):
     
     class Meta:
         unique_together=(("doctor", "city"),)
+
+class Check(models.Model):
+    productFK       = models.ForeignKey(Product, null=False, blank=False, on_delete=models.PROTECT)
+    pharmacyFK      = models.ForeignKey(Pharmacy, null=False, blank=False, on_delete=models.PROTECT)
+    doctorFK        = models.ForeignKey(Doctor, null=False, blank=False, on_delete=models.PROTECT)
+    checker         = models.CharField('State', null=False, blank=False, unique=True, max_length=20)

@@ -2,7 +2,7 @@
 	<select>
 		<option value="">المحافظة</option>
 	{% for state in states %}
-		<option value={{ state.statePK }}>{{ state.state }}</option>
+		<option value={{ state.id }}>{{ state.state }}</option>
 	{% endfor %}
 	</select>
 {% else %}

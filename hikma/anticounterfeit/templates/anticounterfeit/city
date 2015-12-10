@@ -2,7 +2,7 @@
 	<select>
 		<option value="">المنطقة</option>
 	{% for city in cities %}
-		<option value={{ city.cityPK }}>{{ city.city }}</option>
+		<option value={{ city.id }}>{{ city.city }}</option>
 	{% endfor %}
 	</select>
 {% else %}

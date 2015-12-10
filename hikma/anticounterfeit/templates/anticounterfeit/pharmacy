@@ -2,7 +2,7 @@
 	<select>
 		<option value="">اختر الصيدلية</option>
 	{% for pharmacy in pharmacies %}
-		<option value={{ pharmacy.pharmacyPK }}>{{ pharmacy.pharmacy }}</option>
+		<option value={{ pharmacy.id }}>{{ pharmacy.pharmacy }}</option>
 	{% endfor %}
 	</select>
 {% else %}
