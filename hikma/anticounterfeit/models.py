@@ -41,7 +41,7 @@ class State (models.Model):
         return self.state
     
 class City(models.Model):
-    city            = models.CharField('City', null=False, blank=False, unique=True, max_length=30)
+    city            = models.CharField('City', null=False, blank=False, unique=True, max_length=20)
     state           = models.ForeignKey(State, null=False, blank=False, on_delete=models.PROTECT)
 
     def __unicode__(self):
@@ -51,7 +51,7 @@ class City(models.Model):
         unique_together=(("city", "state"),)
     
 class Pharmacy(models.Model):
-    pharmacy        = models.CharField('Pharmacy', null=False, blank=False, unique=True, max_length=30)
+    pharmacy        = models.CharField('Pharmacy', null=False, blank=False, unique=True, max_length=50)
     city            = models.ForeignKey(City, null=False, blank=False, on_delete=models.PROTECT)
     
     def __unicode__(self):
@@ -64,7 +64,7 @@ class Pharmacy(models.Model):
         unique_together=(("pharmacy", "city"),)
         
 class Doctor(models.Model):
-    doctor          = models.CharField('Doctor', null=False, blank=False, unique=True, max_length=30)
+    doctor          = models.CharField('Doctor', null=False, blank=False, unique=True, max_length=50)
     city            = models.ForeignKey(City, null=False, blank=False, on_delete=models.PROTECT)
     
     def __unicode__(self):
@@ -81,5 +81,5 @@ class Check(models.Model):
     pharmacyFK      = models.ForeignKey(Pharmacy, null=False, blank=False, on_delete=models.PROTECT)
     doctorFK        = models.ForeignKey(Doctor, null=False, blank=False, on_delete=models.PROTECT)
     checker         = models.CharField('Checker', null=False, blank=False, max_length=50)
-    checkerMobile   = models.CharField('Cheaker Mobile', null=False, blank=False, max_length=50)
+    checkerMobile   = models.CharField('Cheaker Mobile', null=False, blank=False, max_length=11)
     checkerEmail    = models.CharField('Cheaker Email', null=False, blank=False, max_length=50)

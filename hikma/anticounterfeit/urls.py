@@ -5,11 +5,10 @@ from . import views
 urlpatterns = [
                # ex: /anticounterfeit/
                url(r'^$', views.index, name='index'),
-               # ex: /anticounterfeit/check
-               url(r'^check/$', views.check, name='check'),
+               # ex: /anticounterfeit/check/
                # ex: /anticounterfeit/check/5463192
-               url(r'^checkQRCode/(?P<QRCode>[0-9]+)$', views.checkQRCode, name='checkQRCode'),
-               # ex: /anticounterfeit/product
+               url(r'^(check/|check/(?P<QRCode>[0-9]+))$', views.check, name='check'),
+               # ex: /anticounterfeit/product/
                url(r'^product/$', views.product, name='product'),
                # ex: /anticounterfeit/state
                url(r'^state/$', views.state, name='state'),
@@ -20,5 +19,5 @@ urlpatterns = [
                # ex: /anticounterfeit/01/doctor
                url(r'^(?P<cityID>[0-9]+)/doctor$', views.doctor, name='doctor'),
                # ex: /anticounterfeit/result
-               url(r'^result/$', views.result, name='result'),              
+               url(r'^result/$', views.result, name='result'),
 ]

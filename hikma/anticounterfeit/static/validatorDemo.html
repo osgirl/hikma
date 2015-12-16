@@ -1,0 +1,14 @@
+<html>
+	<title></title>
+	<head>
+	<meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="validatorDemo.js"></script>
+        <script src="validatorMessageBefore.js"></script>
+        <LINK REL=StyleSheet HREF="validator.css" TYPE="text/css">
+	</head>
+	<body>
+		<input type="text" id="textInput" validator="^[ a-zA-Z\u0621-\u063A\u0641-\u064A]{3,50}$" validatorMessage="حروف عربية, إتجليزية أو مسافة واحدة بين كل كلمة والأخرى">
+		<input type="button" id="validateArrayValidatorButton" value="Validate Array Validator">
+	</body>
+</html>
